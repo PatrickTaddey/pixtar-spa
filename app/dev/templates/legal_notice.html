@@ -1,0 +1,9 @@
+{% extends "app/dev/templates/base.html" %}
+{% block content %}
+	<div class="row">
+		<div class="large-12 columns">
+			<h4 class="title"><span>{{ i18n.gettext("legal notice") }}</span></h4>
+			{% include "app/dev/templates/includes/legal_notice.html" %}
+		</div>
+	</div>
+{% endblock %}

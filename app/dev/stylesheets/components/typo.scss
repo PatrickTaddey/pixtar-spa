@@ -1,0 +1,60 @@
+h1, h2, h3, h4, h5, h6 { 
+	color:$grey;
+	&.title {
+		position: relative;
+		text-align: left;
+		text-transform:uppercase;
+		font-family: Open Sans,"Helvetica Neue",Helvetica,Arial,sans-serif;
+		font-weight: 700;
+		margin-bottom:20px !important;
+	}
+	&.title span {
+		background: #fff;
+		padding: 0 15px 0px 0px;
+		position: relative;
+		z-index: 1;
+	}
+	&.title:before {
+		background: #ebebeb;
+		content: "";
+		display: block;
+		height: 1px;
+		position: absolute;
+		top: 50%;
+		left: 0;
+		width: 100%;
+	}	
+	&.special {
+		font-size: rem-calc(14px);
+		margin-top:10px;
+		font-weight:bold;
+		text-transform:uppercase;
+	}
+}
+
+.content-area a {
+	color:$grey;
+	font-weight:bold !important;
+	&:hover {
+		color:darken($grey, 10%);
+	}
+}
+
+.green-button {
+	margin:0px;
+	background-color: $green;	
+	color:$white !important;
+	&:hover, &.open{
+		color:$white !important;
+		background-color: lighten($green, 5%);		
+	}
+}
+
+p {
+	font-size: rem-calc(14px);
+}
+
+
+label.error {
+color: $green !important;
+}

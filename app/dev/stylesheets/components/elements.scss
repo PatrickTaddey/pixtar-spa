@@ -1,0 +1,105 @@
+.circle {
+	@include circle(95px,$light-grey);
+	font-size: rem-calc(28px);
+	width: 95px;
+	height: 95px;
+	line-height: 95px;
+	display: inline-block;
+	color:$grey;
+	font-weight:normal;
+	&:hover{
+		color: $white;
+		background-color: $green;
+	}
+}
+.pricing-table.inactive {
+	@include opacity(0.5);
+}
+
+.pricing-table {
+	border-color:$green;
+	li {
+		border-color: $green;
+	}
+	.price {
+		i {
+			margin-right:5px;
+		}
+		background-color: $green;
+		color:$white;
+		&.domain {
+			font-weight:bold;
+			font-size:rem-calc(16px);
+			a {
+				color:$white !important;
+				&:hover {
+					color:$white !important;
+					text-decoration:underline;
+				}
+			}
+			i {
+				font-weight:normal !important;
+				font-size:rem-calc(16px);
+			}
+		}
+	}
+	.description {
+		text-align: left;
+		color:$grey;
+		font-size: rem-calc(13px);
+	}
+	.bullet-item {
+		color:$grey;
+		font-size: rem-calc(13px);
+		font-weight: bold;
+	}
+	.label {
+		background-color: $green;
+		color:$white;
+	}
+	.button {
+		background-color: $green;	
+		color:$white;
+		&:hover{
+			background-color: lighten($green,5%);
+			color:$white;		
+		}
+	}
+}
+.alert-box {
+	&.success {
+		background-color: $green !important;
+		color:$white !important;
+		border-color:darken($green, 10%) !important;
+		i {
+			color:$white;
+		}
+	}
+	&.warning {
+		background-color: $grey !important;
+		color:$white !important;
+		border-color:darken($grey, 10%) !important;
+		i {
+			color:$white;
+		}
+	}
+}
+
+#scroll_top {
+    opacity: 0.8;
+	@include circle(40px,$grey);
+	font-size: rem-calc(20px);
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	display: none;
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	i {
+		color:$white;
+	}
+}
+#scroll_top:hover {
+    opacity: 0.8;
+}

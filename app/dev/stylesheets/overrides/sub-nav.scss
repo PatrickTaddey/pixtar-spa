@@ -1,0 +1,24 @@
+$include-html-nav-classes: $include-html-classes;
+
+// We use these to control margin and padding
+$sub-nav-list-margin: rem-calc(-4 0 18);
+$sub-nav-list-padding-top: rem-calc(4);
+
+// We use this to control the definition
+$sub-nav-font-size: rem-calc(14);
+$sub-nav-font-color: #999;
+$sub-nav-font-weight: bold;
+$sub-nav-text-decoration: none;
+$sub-nav-border-radius: 3px;
+
+// We use these to control the active item styles
+$sub-nav-active-font-weight: bold;
+$sub-nav-active-bg: $green;
+$sub-nav-active-color: $white;
+$sub-nav-active-padding: rem-calc(3 9);
+$sub-nav-active-cursor: default;
+
+// We use these to the item divider
+$sub-nav-item-divider: "";
+$sub-nav-item-divider-margin: rem-calc(10);
+

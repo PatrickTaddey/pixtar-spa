@@ -1,0 +1,165 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-03-11 08:16+0100\n"
+"PO-Revision-Date: 2014-11-27 15:13+0200\n"
+"Last-Translator: Patrick Taddey <tooltonix@gmail.com>\n"
+"Language-Team: German \n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 1.8\n"
+
+#: app/dev/templates/profile.html:5 app/dev/templates/menu.html:25
+msgid "profile"
+msgstr "Profil"
+
+#: app/dev/templates/profile.html:10
+msgid "briefing"
+msgstr "Im Angebot"
+
+#: app/dev/templates/profile.html:17
+msgid "order now"
+msgstr "Jetzt bestellen!"
+
+#: app/dev/templates/404.html:5
+msgid "404"
+msgstr "Route nicht gefunden"
+
+#: app/dev/templates/404.html:6
+msgid "404 text"
+msgstr "Diese Route kenne ich noch nicht!"
+
+#: app/dev/templates/footer.html:6
+msgid "fork me on github"
+msgstr "fork me on github"
+
+#: app/dev/templates/footer.html:9
+msgid "buy this domain"
+msgstr "buy this domain"
+
+#: app/dev/templates/footer.html:27 app/dev/templates/contact.html:53
+#: app/dev/templates/menu.html:33 app/dev/templates/legal_notice.html:5
+msgid "legal notice"
+msgstr "Impressum"
+
+#: app/dev/templates/contact.html:5 app/dev/templates/menu.html:30
+msgid "contact"
+msgstr "Kontakt"
+
+#: app/dev/templates/contact.html:13
+msgid "name"
+msgstr "Name"
+
+#: app/dev/templates/contact.html:14
+msgid "\"placeholder name\""
+msgstr "\"John Doe\""
+
+#: app/dev/templates/contact.html:21
+msgid "email"
+msgstr "E-Mail"
+
+#: app/dev/templates/contact.html:22
+msgid "\"placeholder email\""
+msgstr "\"john.doe@gmail.com\""
+
+#: app/dev/templates/contact.html:30
+msgid "offer"
+msgstr "Angebot"
+
+#: app/dev/templates/contact.html:31
+msgid "\"placeholder offer\""
+msgstr "\"z.B. '100'\""
+
+#: app/dev/templates/contact.html:39 app/dev/templates/menu.html:32
+msgid "message"
+msgstr "Nachricht"
+
+#: app/dev/templates/contact.html:40
+msgid "\"placeholder message\""
+msgstr "\"Deine Nachricht an mich...\""
+
+#: app/dev/templates/contact.html:47
+msgid "\"send message\""
+msgstr "Abschicken"
+
+#: app/dev/templates/skills.html:5
+msgid "Skills"
+msgstr "Skills"
+
+#: app/dev/templates/skills.html:12
+msgid "Filter:"
+msgstr "Filter"
+
+#: app/dev/templates/skills.html:14 app/dev/templates/skills.html:23
+#: app/dev/templates/skills.html:26
+msgid "All"
+msgstr "Alle"
+
+#: app/dev/templates/skills.html:42
+msgid "goto"
+msgstr "Zum Anbieter"
+
+#: app/dev/templates/domains.html:5
+msgid "domains for sale"
+msgstr "Domainverkauf"
+
+#: app/dev/templates/domains.html:20
+msgid "buy now"
+msgstr "Gebot senden"
+
+#: app/dev/templates/menu.html:16
+msgid "menu"
+msgstr "Menu"
+
+#: app/dev/templates/menu.html:21
+msgid "start"
+msgstr "Home"
+
+#: app/dev/templates/menu.html:23
+msgid "about"
+msgstr "Über mich"
+
+#: app/dev/templates/menu.html:26
+msgid "skills"
+msgstr "Skills"
+
+#: app/dev/templates/menu.html:36
+msgid "domains"
+msgstr "Domainverkauf"
+
+#: app/dev/templates/main.html:13
+msgid "show domains"
+msgstr "Domains anzeigen"
+
+#: app/dev/scripts/views/contact.coffee:31
+msgid "Mail sent"
+msgstr "Danke! Deine E-Mail wurde verschickt."
+
+#: app/dev/scripts/views/contact.coffee:34
+msgid "Mail not sent"
+msgstr "Fehler. Deine E-Mail konnte nicht verschickt werden."
+
+#: app/dev/scripts/models/contact.coffee:20
+msgid "Please enter your name"
+msgstr "Bitte einen Namen eingeben."
+
+#: app/dev/scripts/models/contact.coffee:24
+msgid "Please enter your email"
+msgstr "Bitte eine valide E-Mail eingeben."
+
+#: app/dev/scripts/models/contact.coffee:27
+msgid "Please enter a valid offer"
+msgstr "Bitte ein Angebot eingeben."
+
+#: app/dev/scripts/models/contact.coffee:32
+msgid "Please enter a message"
+msgstr "Bitte eine Nachricht eingeben."
