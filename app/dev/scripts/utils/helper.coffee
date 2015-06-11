@@ -14,9 +14,10 @@ Pikaday = require('pikaday')
 ###
 class Helper
 
-	# convert mysql datetime to DD.MM.YYYY
-	format_datetime:(datetime) ->
-		return moment(datetime).format('DD.MM.YYYY')
+	# set csrftoken in request header
+	set_csrftoken:(csrftoken) ->
+		$.ajaxPrefilter (options, originalOptions, jqXHR) ->
+			jqXHR.setRequestHeader("x-csrf-token", csrftoken)
 
 	# position footer and jump to top
 	position_footer:()->
