@@ -23,7 +23,7 @@ class SignupView extends BaseView
 			event.preventDefault()
 			$(".alert-box").addClass("hide")
 			
-		"submit #js-form": (event) ->
+		"submit #js-image-form": (event) ->
 			event.preventDefault()
 			ImageModel.set
 				"description": $('#description').val()

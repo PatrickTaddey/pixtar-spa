@@ -1,4 +1,6 @@
 $ = require("jquery")
+Backbone = require("backbone")
+Backbone.$ = $
 BaseModel = require("./base.coffee")
 ConfigModel = require("./config.coffee")
 i18n = require("../utils/i18n.coffee")
@@ -7,7 +9,7 @@ i18n = require("../utils/i18n.coffee")
 	SignupModel extends from BaseModel
 	exports singleton
 ###
-class SignupModel extends BaseModel
+class SignupModel extends Backbone.Model
 	urlRoot: () ->
 		ConfigModel.get("api") + "users.json"
 
@@ -26,7 +28,7 @@ class SignupModel extends BaseModel
 				message: i18n.gettext("Mindestens 8 Zeichen. ")
 			}, {
 				fn: (value) ->
-					if @get("password_confirm") isnt value
+					if @get("password_confirm") isnt value and @get("password_confirm")?
 						return i18n.gettext("Beide Passwörter müssen übereinstimmen.")
 					else
 						return true
@@ -40,7 +42,7 @@ class SignupModel extends BaseModel
 				message: i18n.gettext("Mindestens 8 Zeichen. ")
 			}, {
 				fn: (value) ->
-					if @get("password") isnt value
+					if @get("password") isnt value and @get("password")?
 						return i18n.gettext("Beide Passwörter müssen übereinstimmen.")
 					else
 						return true

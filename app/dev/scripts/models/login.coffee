@@ -20,8 +20,6 @@ class LoginModel extends BaseModel
 			message: i18n.gettext("Bitte gebe deine E-Mail ein.")
 		password: 
 			required: true
-			minLength: 8
-			maxLength: 255
-			message: i18n.gettext("Bitte gebe deine Passwort ein.")
+			message: i18n.gettext("Bitte gebe dein Passwort ein.")
 
 module.exports = new LoginModel()

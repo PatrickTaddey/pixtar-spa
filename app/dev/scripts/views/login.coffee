@@ -20,7 +20,7 @@ class SignupView extends BaseView
 			event.preventDefault()
 			$(".alert-box").addClass("hide")
 			
-		"submit #js-form": (event) ->
+		"submit #js-login-form": (event) ->
 			event.preventDefault()
 			LoginModel.set($('form').serializeObject())
 			return if !LoginModel.isValid()
