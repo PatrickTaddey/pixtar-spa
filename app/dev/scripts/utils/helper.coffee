@@ -35,23 +35,13 @@ class Helper
 		.find(".js-alert-message").text(alert_message)
 		$(document).foundation('alert', 'reflow')
 
-	initialize_datepicker: (input_name) ->
-		min_date = moment().format("DD.MM.YYYY")
-		element = $("input[name=" + input_name + "]")[0]
-		$("input[name=" + input_name + "]").val(min_date)
-		picker = new Pikaday(
-			field: element
-			format: 'DD.MM.YYYY'
-			#minDate: moment(min_date,  'DD.MM.YYYY').toDate()
-			maxDate: moment("01.01.2015",  'DD.MM.YYYY').toDate()
-			firstDay:1
-			i18n:
-				previousMonth : '',
-				nextMonth     : '',
-				months        : ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'],
-				weekdays      : ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'],
-				weekdaysShort : ['So','Mo','Di','Mi','Do','Fr','Sa']
-		).setDate(min_date)
+	# handle routing - set active element in menu
+	handle_routing:(route, params) ->
+		$("nav li").removeClass("active")
+		element = $('a[href~="#' + route.split('(')[0] + '"]')
+		element.parent().addClass("active")
+		if element.closest("ul").hasClass("dropdown")
+			element.closest("li.has-dropdown").addClass("active")
 
 	scroll_top : () ->
 		$(window).scroll () ->

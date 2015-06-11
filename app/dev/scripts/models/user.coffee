@@ -1,3 +1,5 @@
+$ = require("jquery")
+require("jquery-cookie")
 BaseModel = require("./base.coffee")
 Helper = require("../utils/helper.coffee")
 
@@ -7,9 +9,8 @@ Helper = require("../utils/helper.coffee")
 ###
 class UserModel extends BaseModel
 	initialize: () ->
-		user = localStorage.getItem('user');
-		if user?
-			@set(JSON.parse(user))
-			Helper.set_csrftoken(@get("csrftoken"))
+		session_id = $.cookie("CAKEPHP")
+		if session_id?
+			@set("session_id", session_id)
 
 module.exports = new UserModel()

@@ -4,8 +4,11 @@
 		{% for image in images_collection %}
 			<div class="small-12 medium-6 large-4 columns">
 				<ul class="pricing-table" >
-					<li class="price domain"> {{ image.get("name") }}</li>
-					<li class="description" data-equalizer-watch>{{ image.get("description") }}</li>
+					<li class="description" data-equalizer-watch>
+						<img alt='{{ image.get("name") }}' src="{{ image_url + image.get('id') }}.json" />
+					</li>
+					<li class="bullet-item">von {{ image.get("users").username }}</li>					
+					<li class="bullet-item">{{ image.get("description") }}</li>					
 				</ul>
 			</div>
 		{% endfor %}

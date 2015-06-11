@@ -20,7 +20,6 @@ class ActivateView extends BaseView
 			success: (model, response, options) =>
 				$(@$el).html(@render(@template, success: true, message: ''))
 			error: (model, response, options) =>
-				console.log response
 				$(@$el).html(@render(@template, success: false, message: response.responseJSON.message))
 		
 module.exports = new ActivateView()

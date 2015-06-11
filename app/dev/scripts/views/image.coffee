@@ -1,7 +1,9 @@
+_ = require("underscore")
 BaseView = require("./base.coffee")
-LoginModel = require("../models/login.coffee")
+ImageModel = require("../models/image.coffee")
 Helper = require("../utils/helper.coffee")
-User = require("../models/user.coffee")
+ImagesCollection = require("../collections/images.coffee")
+
 $ = require("jquery")
 Backbone = require("backbone")
 require("backbone-validator")
@@ -14,37 +16,34 @@ require("jquery-serialize-object")
 	exports singleton
 ###
 class SignupView extends BaseView
-	template: "app/dev/templates/login.html"
+	template: "app/dev/templates/image.html"
 	events: 
+		"change input[type=file]" : "upload"
 		"click .close-alert": (event) ->
 			event.preventDefault()
 			$(".alert-box").addClass("hide")
 			
 		"submit #js-form": (event) ->
 			event.preventDefault()
-			LoginModel.set($('form').serializeObject())
-			return if !LoginModel.isValid()
-			LoginModel.save null,
+			ImageModel.set
+				"description": $('#description').val()
+				"image": $('#image').val()
+			return if !ImageModel.isValid()
+			
+			ImageModel.save null,
 				success: (model, response, options) =>
 					$("form")[0].reset()
-					User.set(
-						"session_id": model.get("session_id")
-						"username": model.get("username")
-					)
-					$.cookie("CAKEPHP", User.get("session_id"))
-					window.location.href = ""
 
+					# refresh images collection
+					ImagesCollection.fetch
+						success: (model, response, options) =>
+							Backbone.history.navigate("", trigger:true)
 				error: (model, response, options) =>
 					Helper.show_alert("warning", response.responseJSON.message)
 
-		"blur .js-form-field": (event) ->
-			name = $(event.target).attr("name")
-			value = $(event.target).val()
-			LoginModel.set(name, value).validate(name)
-
 	initialize: ->
 		@$el = $(@regions.content)
-		@bindValidation(LoginModel)
+		@bindValidation(ImageModel)
 
 	show: () ->
 		$(@$el).html(@render(@template))
@@ -59,5 +58,29 @@ class SignupView extends BaseView
 		element = $('[name=' + attrName + ']')
 		element.parent().addClass("error")
 		element.parent().next("small").html(errors).removeClass("hide")
+	upload : (event) ->
+		files = event.target.files
+		_.each(files, (element, index, list) =>
+			imageReader = new FileReader()
+			imageReader.onload = ((file) =>
+				if file.type.toLowerCase() in ["image/jpeg", "image/jpg"] 
+					(e) =>
+						ImageModel.set(
+							"file_content" : e.target.result
+							"mime_type" : file.type
+							"name" : file.name
+						) 
+						console.log ImageModel
+						# todo: preview $("#js-preview-image").css("background-image", "url(" + e.target.result + ")")
+				else
+					ImageModel.unset("image")
+					$("#image").val("")
+					@onInvalidField("image", "", "Es sind nur JPEGs erlaubt.")
+
+			)(element)
+
+			imageReader.readAsDataURL(element)
+		)
+
 
 module.exports = new SignupView()

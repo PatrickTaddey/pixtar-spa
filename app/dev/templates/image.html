@@ -2,7 +2,7 @@
 {% block content %}
 	<div class="row">
 		<div class="small-12 medium-6 columns">
-			<h4 class="title"><span>Login</span></h4>
+			<h4 class="title"><span>Neues Bild anlegen</span></h4>
 			<div data-alert="" class="alert-box radius hide">
 				<span class="js-alert-message"></span>
 				<a class="close-alert right"><i class="fa fa-close"></i></a>
@@ -10,23 +10,23 @@
 			<form method="post" name="contact" id="js-form" class="form">
 				<div class="row">
 					<div class="small-12 columns">
-						<label for="username">E-Mail
-							<input class="js-form-field" name="username" id="username" type="text" placeholder="Deine E-Mail Adresse" />
+						<label for="description">Beschreibung
+							<textarea class="js-form-field" name="description" id="description" placeholder="Mein schönes Bild"></textarea>
 						</label>
 						<small class="error hide"></small>
 					</div>
 				</div>
 				<div class="row">
 					<div class="small-12 columns">
-						<label for="password">Passwort
-							<input class="js-form-field" name="password" id="password" type="password" placeholder="Dein Passwort" />
+						<label for="image">Bild
+							<input class="js-form-field" name="image" id="image" type="file" placeholder="Dein Bild" value="" />
 						</label>
 						<small class="error hide"></small>
 					</div>
 				</div>
 				<div class="row">
 					<div class="small-12 columns text-right">
-						<input type="submit" class="submit green-button button small radius" value="Login" />
+						<input type="submit" class="submit green-button button small radius" value="Speichern" />
 					</div>
 				</div>
 			</form>

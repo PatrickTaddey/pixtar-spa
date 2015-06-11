@@ -1,5 +1,6 @@
+$ = require("jquery")
 Backbone = require("backbone")
-Backbone.$ = require("jquery")
+Backbone.$ = $
 require("backbone.routefilter")
 Helper = require("./utils/helper.coffee")
 # require views
@@ -9,6 +10,7 @@ ContentView = require("./views/content.coffee")
 SignupView = require("./views/signup.coffee")
 LoginView = require("./views/login.coffee")
 ActivateView = require("./views/activate.coffee")
+ImageView = require("./views/image.coffee")
 
 UserModel = require("./models/user.coffee")
 ImagesCollection = require("./collections/images.coffee")
@@ -26,8 +28,10 @@ class AppRouter extends Backbone.Router
 		"gutschein(/:voucher_id)" : "contact"
 		"signup" : "signup"
 		"login" : "login"
-		"impressum" : "legal_notice"
+		"logout" : "logout"
 		"activate/:activation_key" : "activate"
+		"image" : "image"
+		"impressum" : "legal_notice"
 		"*undefined" : "content"
 
 	# we have to fetch the ProfileModel once
@@ -41,6 +45,9 @@ class AppRouter extends Backbone.Router
 
 	# handle routing - set active element in menu
 	before: (route, params) ->
+		if UserModel.get("session_id")? and !route
+			Backbone.history.navigate("", {trigger: true})
+		Helper.handle_routing(route, params)
 	index: () ->
 		ContentView.show("main.html")
 	legal_notice: () ->
@@ -51,8 +58,13 @@ class AppRouter extends Backbone.Router
 		SignupView.show()
 	login: () ->
 		LoginView.show()
+	logout: () ->
+		$.removeCookie('CAKEPHP')
+		window.location.href = ""
 	activate: (activation_key) ->
 		ActivateView.show(activation_key)
+	image: () ->
+		ImageView.show()
 
 # export a singleton of the AppRouter
 module.exports = new AppRouter()
