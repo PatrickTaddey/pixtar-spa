@@ -7,7 +7,10 @@ MenuView = require("./views/menu.coffee")
 FooterView = require("./views/footer.coffee")
 ContentView = require("./views/content.coffee")
 SignupView = require("./views/signup.coffee")
+LoginView = require("./views/login.coffee")
+ActivateView = require("./views/activate.coffee")
 
+UserModel = require("./models/user.coffee")
 ImagesCollection = require("./collections/images.coffee")
 
 ###
@@ -22,7 +25,9 @@ class AppRouter extends Backbone.Router
 		"" : "index"
 		"gutschein(/:voucher_id)" : "contact"
 		"signup" : "signup"
+		"login" : "login"
 		"impressum" : "legal_notice"
+		"activate/:activation_key" : "activate"
 		"*undefined" : "content"
 
 	# we have to fetch the ProfileModel once
@@ -44,6 +49,10 @@ class AppRouter extends Backbone.Router
 		ContentView.show("404.html")
 	signup: () ->
 		SignupView.show()
+	login: () ->
+		LoginView.show()
+	activate: (activation_key) ->
+		ActivateView.show(activation_key)
 
 # export a singleton of the AppRouter
 module.exports = new AppRouter()
