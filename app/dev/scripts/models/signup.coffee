@@ -5,7 +5,6 @@ i18n = require("../utils/i18n.coffee")
 
 ###
 	SignupModel extends from BaseModel
-	- form validation, sharing contact data
 	exports singleton
 ###
 class SignupModel extends BaseModel
@@ -18,7 +17,7 @@ class SignupModel extends BaseModel
 			minLength: 8
 			maxLength: 40
 			format: "email"
-			message: i18n.gettext("Bitte gebe Deine E-Mail ein.")
+			message: i18n.gettext("Bitte gebe deine E-Mail ein.")
 		password: [
 			{
 				required: true
