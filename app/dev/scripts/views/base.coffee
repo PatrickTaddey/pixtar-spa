@@ -1,6 +1,17 @@
 Backbone = require("backbone")
+window.jQuery = require("jquery")
+
 i18n = require("../utils/i18n.coffee")
 Helper = require("../utils/helper.coffee")
+
+# we need to require the precompiled nunjucks templates
+templates = require("../../templates/templates.js")
+
+# export window.Modernizr - dependency for foundation
+window.Modernizr = require('browsernizr2')
+
+# export window.Foundation
+foundation = require("foundation")
 
 ###
 	BaseView extends from Backbone.View

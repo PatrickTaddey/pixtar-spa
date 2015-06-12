@@ -1,18 +1,24 @@
 $ = require("jquery")
 Backbone = require("backbone")
 _ = require("underscore")
-moment = require("moment")
-Pikaday = require('pikaday')
 
 ###
 	class Helper 
+	- ajaxsetup: send credentials in header
+	- set csrftoken in request header
 	- position footer and jump to top
-	- show alert messages in the contact form
-	- get site to display the logo in menu
+	- show alert messages in forms
 	- handle routing - set active element in menu
+	- scroll to top
 	exports singleton
 ###
 class Helper
+
+	# ajaxsetup: send credentials in header
+	set_ajax_prefilter:() ->
+		$.ajaxPrefilter ( options, originalOptions, jqXHR ) ->
+			options.xhrFields =
+				withCredentials: true
 
 	# set csrftoken in request header
 	set_csrftoken:(csrftoken) ->
@@ -43,6 +49,7 @@ class Helper
 		if element.closest("ul").hasClass("dropdown")
 			element.closest("li.has-dropdown").addClass("active")
 
+	# scroll to top
 	scroll_top : () ->
 		$(window).scroll () ->
 			if $(this).scrollTop() > 100

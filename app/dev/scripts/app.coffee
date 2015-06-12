@@ -1,31 +1,31 @@
 $ = require("jquery")
-Backbone = require("backbone")
-Backbone.$ = $
-require("backbone.routefilter")
+require("jquery-cookie")
 Helper = require("./utils/helper.coffee")
+Helper.set_ajax_prefilter()
+# require Backbone and route extension routefilter
+Backbone = require("backbone")
+require("backbone.routefilter")
+
 # require views
 MenuView = require("./views/menu.coffee")
 FooterView = require("./views/footer.coffee")
 ContentView = require("./views/content.coffee")
-SignupView = require("./views/signup.coffee")
 LoginView = require("./views/login.coffee")
 ActivateView = require("./views/activate.coffee")
 ImageView = require("./views/image.coffee")
+ImageListView = require("./views/image_list.coffee")
 
 UserModel = require("./models/user.coffee")
-ImagesCollection = require("./collections/images.coffee")
 
 ###
 	AppRouter extends from Backbone.Router
-	- fetch ProfileModel in initializer
 	- handle routing
 	- display views
 	exports a singleton
 ###
 class AppRouter extends Backbone.Router
 	routes :
-		"" : "index"
-		"gutschein(/:voucher_id)" : "contact"
+		"images(/page/:page)" : "index"
 		"signup" : "signup"
 		"login" : "login"
 		"logout" : "logout"
@@ -36,20 +36,18 @@ class AppRouter extends Backbone.Router
 
 	# we have to fetch the ProfileModel once
 	initialize: () ->
-		ImagesCollection.fetch
-			success: (model, response, options) =>
-				MenuView.show()
-				FooterView.show()
-				Backbone.history.start()
+		MenuView.show()
+		FooterView.show()
+		Backbone.history.start()
 		Helper.scroll_top()
 
 	# handle routing - set active element in menu
 	before: (route, params) ->
-		if UserModel.get("session_id")? and !route
-			Backbone.history.navigate("", {trigger: true})
+		if route is "*undefined"
+			Backbone.history.navigate("images", {trigger: true})
 		Helper.handle_routing(route, params)
-	index: () ->
-		ContentView.show("main.html")
+	index: (page) ->
+		ImageListView.show(page)
 	legal_notice: () ->
 		ContentView.show("legal_notice.html")
 	content: () ->

@@ -5,8 +5,9 @@
 // ...because we have our own style & wanna ovveride it
 @import "colors.scss";
 @import "_settings.scss";
-@import "overrides/top-bar.scss";
+@import "overrides/pagination.scss";
 @import "overrides/sub-nav.scss";
+@import "overrides/top-bar.scss";
 @import "overrides/typography.scss";
 
 // import some foundation stuff

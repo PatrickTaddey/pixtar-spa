@@ -1,7 +1,5 @@
 $ = require("jquery")
 BaseView = require("./base.coffee")
-ImagesCollection = require("../collections/images.coffee")
-ConfigModel = require("../models/config.coffee")
 
 ###
 	ContentView extends from BaseView
@@ -13,11 +11,7 @@ class ContentView extends BaseView
 	template_path: "app/dev/templates/"
 
 	show: (template) ->
-		$(@regions.content).html @render(@template_path + template, images_collection: ImagesCollection.models, image_url: ConfigModel.get("api") + "images/")
-
+		$(@regions.content).html @render(@template_path + template)
 		@position_footer()
-		$(document).foundation
-			equalizer:
-				equalize_on_stack: true
 
 module.exports = new ContentView()

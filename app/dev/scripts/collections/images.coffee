@@ -8,9 +8,11 @@ ConfigModel = require("../models/config.coffee")
 	exports singleton
 ###
 class ImagesCollection extends Backbone.Collection
+	pagination:{}
 	url: () ->
 		ConfigModel.get("api") + "images.json"
 	parse : (response) ->
+		@pagination = response.pagination
 		return response.data
 
 module.exports = new ImagesCollection()
