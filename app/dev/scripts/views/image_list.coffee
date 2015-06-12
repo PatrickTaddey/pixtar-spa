@@ -16,7 +16,6 @@ class ImageListView extends BaseView
 			ImagesCollection.url = ConfigModel.get("api") + "images.json?page=" + page
 		ImagesCollection.fetch
 			success: (collection, response, options) =>
-				console.log ImagesCollection.pagination
 				$(@regions.content).html @render @template, 
 					collection: collection.models, 
 					image_url: ConfigModel.get("api") + "images/"
