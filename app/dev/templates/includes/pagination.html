@@ -2,21 +2,21 @@
 	<ul class="pagination">
 
 		{% if pagination.has_prev_page %}
-			<li class="arrow"><a href="#images/page/{{ pagination.current_page - 1 }}">&laquo;</a></li>
+			<li class="arrow"><a href="#images/page/{{ pagination.current_page - 1 }}{% if filter %}/filter/{{filter}}{% endif %}">&laquo;</a></li>
 		{% else %}
 			<li class="arrow unavailable"><a>&laquo;</a></li>
 		{% endif %}
 
 		{% for i in range(0, pagination.page_count) -%}
 			{% if loop.index == pagination.current_page %}
-				<li class="current"><a href="#images/page/{{ loop.index }}">{{ loop.index }}</a></li>
+				<li class="current"><a href="#images/page/{{ loop.index }}{% if filter %}/filter/{{filter}}{% endif %}">{{ loop.index }}</a></li>
 			{% else %}
-				<li><a href="#images/page/{{ loop.index }}">{{ loop.index }}</a></li>
+				<li><a href="#images/page/{{ loop.index }}{% if filter %}/filter/{{filter}}{% endif %}">{{ loop.index }}</a></li>
 			{% endif %}
 		{%- endfor %}
 
 		{% if pagination.has_next_page %}
-			<li class="arrow"><a href="#images/page/{{ pagination.current_page + 1 }}">&raquo;</a></li>
+			<li class="arrow"><a href="#images/page/{{ pagination.current_page + 1 }}{% if filter %}/filter/{{filter}}{% endif %}">&raquo;</a></li>
 		{% else %}
 			<li class="arrow unavailable"><a>&raquo;</a></li>
 		{% endif %}

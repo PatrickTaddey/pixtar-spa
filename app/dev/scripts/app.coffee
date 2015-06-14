@@ -25,7 +25,7 @@ UserModel = require("./models/user.coffee")
 ###
 class AppRouter extends Backbone.Router
 	routes :
-		"images(/page/:page)" : "index"
+		"images(/page/:page)(/filter/:filter)" : "index"
 		"signup" : "signup"
 		"login" : "login"
 		"logout" : "logout"
@@ -46,8 +46,8 @@ class AppRouter extends Backbone.Router
 		if route is "*undefined"
 			Backbone.history.navigate("images", {trigger: true})
 		Helper.handle_routing(route, params)
-	index: (page) ->
-		ImageListView.show(page)
+	index: (page, filter) ->
+		ImageListView.show(page, filter)
 	legal_notice: () ->
 		ContentView.show("legal_notice.html")
 	content: () ->

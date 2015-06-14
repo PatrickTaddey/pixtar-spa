@@ -8,12 +8,12 @@ require("backbone-validator")
 require("jquery-serialize-object")
 
 ###
-	SignupView extends from BaseView
+	LoginView extends from BaseView
 	- used for sending contact messages
 	- validation of the contact form
 	exports singleton
 ###
-class SignupView extends BaseView
+class LoginView extends BaseView
 	template: "app/dev/templates/login.html"
 	events: 
 		"click .close-alert": (event) ->
@@ -60,4 +60,4 @@ class SignupView extends BaseView
 		element.parent().addClass("error")
 		element.parent().next("small").html(errors).removeClass("hide")
 
-module.exports = new SignupView()
+module.exports = new LoginView()

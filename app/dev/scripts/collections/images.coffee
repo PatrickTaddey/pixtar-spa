@@ -9,8 +9,14 @@ ConfigModel = require("../models/config.coffee")
 ###
 class ImagesCollection extends Backbone.Collection
 	pagination:{}
-	url: () ->
-		ConfigModel.get("api") + "images.json"
+	url: (page, filter) ->
+		url = ConfigModel.get("api") + "images.json"
+		url += "?page="+page if page?
+
+		if filter?
+			url += if page? then "&filter="+filter else "?filter="+filter
+
+		return url
 	parse : (response) ->
 		@pagination = response.pagination
 		return response.data

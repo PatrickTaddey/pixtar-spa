@@ -1,22 +1,39 @@
 {% extends "app/dev/templates/base.html" %}
 {% block content %}
 	<div class="row top-margin-5">
-		{% include "app/dev/templates/includes/pagination.html" %}
+		<div class="small-12 medium-6 columns">
+			<div class="row collapse">
+				<div class="small-10 columns">
+					<input type="text" id="js-filter-form" value="{{ filter }}" placeholder="Suche..." />
+				</div>
+				<div class="small-2 columns">
+					{% if filter %}
+						<a href="#images" class="button green-button postfix"><i class="fa fa-trash-o"></i></a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
 	</div>
-	<div class="row top-margin-20" data-equalizer>
+	<div class="row top-margin-10" data-equalizer>
 		{% for image in collection %}
 			<div class="small-12 medium-6 large-4 columns">
+				<div data-equalizer-watch>
+					<img alt='{{ image.get("name") }}' src="{{ image_url + image.get('id') }}.json" />
+				</div>
 				<ul class="pricing-table" >
-					<li class="description" data-equalizer-watch>
-						<img alt='{{ image.get("name") }}' src="{{ image_url + image.get('id') }}.json" />
+					<li class="description">
+						{{ image.get("description") }}
 					</li>
-					<li class="bullet-item">von {{ image.get("users").username }}</li>					
-					<li class="bullet-item">{{ image.get("description") }}</li>					
+					<li class="bullet-item">von {{ image.get("user").username }}</li>					
 				</ul>
 			</div>
 		{% endfor %}
 	</div>
 	<div class="row top-margin-5">
-		{% include "app/dev/templates/includes/pagination.html" %}
+		{% if collection.length > 0 %}
+			{% include "app/dev/templates/includes/pagination.html" %}
+		{% else %}
+			Keine Bilder zu '{{ filter }}' gefunden.
+		{% endif %}
 	</div>
 {% endblock %}

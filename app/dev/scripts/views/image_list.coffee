@@ -1,4 +1,5 @@
 $ = require("jquery")
+Backbone = require("backbone")
 BaseView = require("./base.coffee")
 ImagesCollection = require("../collections/images.coffee")
 ConfigModel = require("../models/config.coffee")
@@ -11,15 +12,24 @@ ConfigModel = require("../models/config.coffee")
 ###
 class ImageListView extends BaseView
 	template: "app/dev/templates/main.html"
-	show: (page) =>
-		if page?
-			ImagesCollection.url = ConfigModel.get("api") + "images.json?page=" + page
+	events:
+		"keypress #js-filter-form" : (event) ->
+			value = $(event.currentTarget).val()
+			if event.which is 13 and value.length > 2
+				Backbone.history.navigate("images/filter/" + value, trigger:true)
+
+	initialize: ->
+		@$el = $(@regions.content)
+
+	show: (page, filter) =>		
 		ImagesCollection.fetch
+			url: ImagesCollection.url(page, filter)
 			success: (collection, response, options) =>
-				$(@regions.content).html @render @template, 
-					collection: collection.models, 
+				$(@$el).html @render @template, 
+					collection: collection.models
 					image_url: ConfigModel.get("api") + "images/"
 					pagination: ImagesCollection.pagination
+					filter: filter
 
 				$(document).foundation
 					equalizer:
