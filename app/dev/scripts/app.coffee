@@ -11,6 +11,7 @@ MenuView = require("./views/menu.coffee")
 FooterView = require("./views/footer.coffee")
 ContentView = require("./views/content.coffee")
 LoginView = require("./views/login.coffee")
+SignupView = require("./views/signup.coffee")
 ActivateView = require("./views/activate.coffee")
 ImageView = require("./views/image.coffee")
 ImageListView = require("./views/image_list.coffee")
@@ -25,7 +26,7 @@ UserModel = require("./models/user.coffee")
 ###
 class AppRouter extends Backbone.Router
 	routes :
-		"images(/page/:page)(/filter/:filter)" : "index"
+		"(images)(/page/:page)(/filter/:filter)" : "index"
 		"signup" : "signup"
 		"login" : "login"
 		"logout" : "logout"
